@@ -68,6 +68,8 @@ def transcribe_main(file):
     # Load the desired model
     model = whisper.load_model("medium.en").to(DEVICE)
 
+    logging.info(f"MEDIUM model loaded: {model}")
+
     result, transcript, subtitles = transcribe_file(model, srt, plain, file)
 
     return transcript, subtitles

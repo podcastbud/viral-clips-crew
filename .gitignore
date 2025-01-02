@@ -86,3 +86,5 @@ whisper_output
 clipper_output
 input_files/*
 !input_files/PLACE_CLIPS_HERE
+config.bat
+node_modules
