@@ -70,6 +70,7 @@ def main():
         logging.info("Please select an option to proceed:")
         logging.info("1: Submit a YouTube Video Link")
         logging.info("2: Use an existing video file")
+        logging.info("3: Use S3 file")
         choice = input("Please choose either option 1 or 2: ")
 
         if choice == '1':
@@ -82,6 +83,14 @@ def main():
             if not os.listdir(input_folder):
                 logging.error(f"No video files found in the folder: {input_folder}")
                 continue
+            clean_whisper_output()  # Clean whisper_output folder
+            local_whisper_process(input_folder, whisper_output_folder)
+            break
+        elif choice == '3':
+            logging.info("Using S3 file")
+            url = input("Enter the S3 URL: ")
+            bucket = input("Enter the S3 Bucket: ")
+            s3_prefix = input("Enter the S3 Prefix: ")
             clean_whisper_output()  # Clean whisper_output folder
             local_whisper_process(input_folder, whisper_output_folder)
             break
